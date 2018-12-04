@@ -1,0 +1,113 @@
+/*
+   thsone.css  - ths.one default css
+   copyright 2018 ths@ths.one
+
+   created : 2018/12/01
+   changed : 2018/12/02
+   version : 0.5.0
+
+   This Application and all its containing files is free software; you 
+   can redistribute it and/or modify it under the terms of the GNU 
+   General Public License as published by the Free Software Foundation; 
+   either version 2 of the License, or (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful, but 
+   WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+   or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License 
+   for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+*/
+html, body, p, a {
+    margin: 0;
+    font: 13px/18px Arial, sans-serif;
+    background: #909090;
+    color:      #101010;
+    overflow: hidden;
+}
+
+a, a:link, a:visited {
+    text-decoration: none;
+    color: #202080;
+    cursor: pointer;
+}
+a:hover {
+    text-decoration: underline;
+}
+a:active {
+    text-decoration: underline;
+    color: #2020D0;
+}
+
+#head {
+  position: absolute; top: 0; right: 0px; bottom: 0;  margin-right: 20px ; padding-right: 20px; overflow: auto; 
+  white-space:pre ;
+  font-family: "Courier New", fixed, monospace;
+}
+
+#menu {
+  position: absolute; left: 20px; top: 30px; text-align: left ;
+}
+
+#page {
+  position: absolute; left: 0px; top: 290px; text-align: left ;
+}
+
+
+#carea {
+  position: relative;
+}
+
+canvas {
+  color:white;
+  background-color:inherit;
+}
+
+.error_big {
+  font-size: 1.7em;  
+  font-weight: bold;
+  font-style: normal;
+  line-height: 1.3em;
+  font-family: Helvetica, Arial, Verdana, sans-serif; 
+}
+.error_big_red 
+{ 
+  font-size: 1.7em;  
+  font-weight: bold;
+  font-style: normal;
+  color: #F31010;
+  line-height: 1.3em;
+  font-family: Helvetica, Arial, Verdana, sans-serif; 
+}
+.error_med 
+{ 
+  font-size: 1.2em;  
+  font-weight: bold;
+  line-height: 1.1em;
+  font-family: Helvetica, Arial, Verdana, sans-serif; 
+
+.error_med_red 
+{ 
+  font-size: 1.2em;  
+  font-weight: bold;
+  color: #F31010;
+  line-height: 1.1em;
+  font-family: Helvetica, Arial, Verdana, sans-serif; 
+}
+.error_std 
+{ 
+  font-size: 1.0em;  
+  font-weight: bold;
+  line-height: 1.1em;
+  font-family: Helvetica, Arial, Verdana, sans-serif; 
+
+.error_std_red 
+{ 
+  font-size: 1.0em;  
+  font-weight: bold;
+  color: #F31010;
+  line-height: 1.1em;
+  font-family: Helvetica, Arial, Verdana, sans-serif; 
+}
