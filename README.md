@@ -9,12 +9,16 @@ by special functions.
 displaygrid.html?<param1=value1+param2=value2+...>
 
 # Parameters
-  gridwidth    : grid witdth in cells.
-  gridheight   : grid height in cells
-  cellwidth    : cell width in pixels
-  cellheight   : cell heigth in pixels
-  borderwidth  : border width in pixels
-  borderheight : border heigth in pixels
+
+  parameter    | description
+---------------| -----------
+  gridwidth    | grid witdth in cells
+  gridheight   | grid height in cells
+  cellwidth    | cell width in pixels
+  cellheight   | cell heigth in pixels
+  borderwidth  | border width in pixels
+  borderheight | border heigth in pixels
+---------------| -----------
 
 ## Requirements
 
