@@ -18,7 +18,6 @@ displaygrid.html?<param1=value1+param2=value2+...>
   cellheight   | cell heigth in pixels
   borderwidth  | border width in pixels
   borderheight | border heigth in pixels
----------------| -----------
 
 ## Requirements
 
