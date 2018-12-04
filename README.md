@@ -1,26 +1,28 @@
-# displaygrid
+# Displaygrid
 
-Diplaygrid is a javascript/html framework to display a
+Displaygrid is a javascript/html framework to display a
 variable sized grid which elements can be freely defined 
 by special functions.
 
-# Synopsis
+## Synopsis
 
-displaygrid.html?width=w+height=h+cellwidth=cw+cellheight=ch
+displaygrid.html?<param1=value1+param2=value2+...>
 
 # Parameters
-  width      : grid witdth in cells.
-  height     : grid height in cells
-  cellwidth  : cell width in pixels
-  cellheight : cell heigth in pixels
+  gridwidth    : grid witdth in cells.
+  gridheight   : grid height in cells
+  cellwidth    : cell width in pixels
+  cellheight   : cell heigth in pixels
+  borderwidth  : border width in pixels
+  borderheight : border heigth in pixels
 
-# Requirements
+## Requirements
 
 Displaygrid requires a decent browser supporting javascript and html5 canvas.
 
-# Testing/Diagnostics
+## Testing/Diagnostics
 
-Displaygrid should display a grid using the defined dimensions (see
+displaygrid should display a grid using the defined dimensions (see
 Parameters) and fill it with random colors. Input Parameters are
 checked for positive integers but not for upper limits (so come on,
 check it out and have your browser take a 4k grid using a 1 pixel cell).
@@ -28,10 +30,10 @@ check it out and have your browser take a 4k grid using a 1 pixel cell).
 Tested on Firefox 60+. No browwser capability checks are done, if it 
 doesn't work for you , use another browser.
 
-# Copyright
+## Copyright
 Displaygrid is copyright (c) 2018 ths.one
 
-# License:
+## License:
 This Application and all its containing files is free software; you 
 can redistribute it and/or modify it under the terms of the GNU 
 General Public License as published by the Free Software Foundation; 
@@ -46,10 +48,10 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-# Known Bugs:
+## Known Bugs:
 There probably are some, we'll let you know as soon as we have found them.
 
-# Authors:
+## Authors:
 ths@ths.one
 
 

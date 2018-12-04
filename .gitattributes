@@ -1,0 +1,10 @@
+#
+# ignore the framework stuff for linguist
+#
+common/css/*
+common/error/*
+common/icons/*
+common/images/*
+doc/*
+*.html
+LICENSE
