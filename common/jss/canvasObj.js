@@ -1,9 +1,9 @@
 //
-// displaygrid.js  - javascript source for diplaygrid
+// canvasObj.js  - javascript object for canvas handling
 // copyright 2018 ths@ths.one
 //
-// created : 2018/12/01
-// changed : 2018/12/15
+// created : 2018/12/15
+// changed : 2018/12/16
 // version : 0.5.1
 //
 // This Application and all its containing files is free software; you 
@@ -21,7 +21,25 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 
-function displaygrid( canvasname )
+function canvasObj()
 {
-  this.status            = 0;
+  this.status            = -1 ;
+  this.canvasName        = "" ;
+  this.cobj              = undefined ;
+  this.ctx               = undefined ;
+
+  // object methods
+
+  this.initObject        = function( cname ) {
+    if ( typeof variable !== 'undefined') if (cname.length > 0 ) this.canvasName = cname ;
+    if ( this.canvasName.lenght > 0 )
+    {
+      if ( this.cobj = document.getElementById(this.canvasName) ) ;
+      {
+        if ( ctx = canvas.getContext("2d") ) this.status = 0 ;
+      }
+    }
+    return this.status ;
+  }
+
 }

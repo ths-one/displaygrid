@@ -21,7 +21,30 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 
-function displaygrid( canvasname )
+function gridObj()
 {
-  this.status            = 0;
+  // status properties
+
+  this.gridWidth    = -1 ;
+  this.gridHeight   = -1 ;
+  this.cellWidth    = -1 ;
+  this.cellHeight   = -1 ;
+  this.borderWidth  = -1 ;
+  this.borderHeight = -1 ;
+
+  // object methods
+
+  this.initObject    = GridO_initObject;
+
 }
+
+function GridO_initObject( gw, gh , cw , ch , bw, bh )
+{
+  this.gridWidth  = gw ;
+  this.gridHeight = gh ;
+  this.cellWidth  = cw ;
+  this.cellHeight = ch ;
+  this.borderWidth  = bw ;
+  this.borderHeight = bh ;
+}
+

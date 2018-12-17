@@ -3,8 +3,8 @@
 // copyright 2018 ths@ths.one
 //
 // created : 2018/12/01
-// changed : 2018/12/02
-// version : 0.5.0
+// changed : 2018/12/15
+// version : 0.5.1
 //
 // This Application and all its containing files is free software; you 
 // can redistribute it and/or modify it under the terms of the GNU 
@@ -29,7 +29,7 @@ function browserObj( smode )
 
   this.infoStr           = "UNKNOWN";
   this.name              = "UNKNOWN";
-  this.version           = 0.0;
+  this.version           = "UNKNOWN";
   this.type              = "UNKNOWN";
   this.objModel          = "UNKNOWN";
   this.cssEnabled        = false;
@@ -43,6 +43,7 @@ function browserObj( smode )
   this.alertBrowser  = BO_alertBrowser;
   this.writeCSS      = BO_writeCSS;
   this.testFeatures  = BO_testFeatures;
+  this.getWindowSize = BO_getWindowSize;
 
   // object setup
 
@@ -79,6 +80,7 @@ function BO_initObject( mode )
   this.canvasEnabled = false;
 
   this.testFeatures() ;
+  this.getWindowSize() ;
 
   if (this.debugMode>2) this.alertBrowser();
 }
@@ -92,6 +94,8 @@ function BO_alertBrowser()
          " \ncssEnabled = " + this.cssEnabled +
          " \ncanvasSupported = " + this.canvasSupported +
          " \ncanvas2DSupported = " + this.canvas2DSupported +
+         " \nwindow with = " + this.winWidth +
+         " \nwindow height = " + this.winHeight +
          " \nstring  = " + this.infoStr
        );
 }
@@ -123,4 +127,14 @@ function BO_testFeatures()
   this.cssEnabled = (tpos==50) ? true : false;
   if ( this.debugMode > 2 ) alert( "BO_testCSS(): testlayer object = " + String(tobj) ) ;
 }
+
+function BO_getWindowSize()
+{
+  if (typeof window.innerWidth != 'undefined')
+  {
+    this.winWidth  = window.innerWidth,
+    this.winHeight = window.innerHeight
+  }
+}
+
 

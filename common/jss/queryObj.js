@@ -3,8 +3,8 @@
 // copyright 2018 ths@ths.one
 //
 // created : 2018/12/01
-// changed : 2018/12/02
-// version : 0.5.0
+// changed : 2018/12/15
+// version : 0.5.1
 //
 // This Application and all its containing files is free software; you 
 // can redistribute it and/or modify it under the terms of the GNU 
@@ -27,7 +27,7 @@
 // function decodeQuery( qstr )
 //   convert encoded chars & spaces
 //   special chars are coded as %XX where XX stands for a 2 digit hexadecimal string
-//   space are code as "+"
+//   space are coded as "+"
 
 function decodeQuery( qstr )
 {

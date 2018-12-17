@@ -3,8 +3,8 @@
 // copyright 2018 ths@ths.one
 //
 // created : 2018/12/01
-// changed : 2018/12/03
-// version : 0.5.0
+// changed : 2018/12/16
+// version : 0.5.1
 //
 // This Application and all its containing files is free software; you 
 // can redistribute it and/or modify it under the terms of the GNU 
@@ -30,6 +30,7 @@ DEFAULT_CELLWIDTH    = 10  ;
 DEFAULT_CELLHEIGHT   = 10  ;
 DEFAULT_BORDERWIDTH  = 2   ;
 DEFAULT_BORDERHEIGHT = 2   ;
+DEFAULT_CANVAS       = "DGcanvas" ;
 
 // global configuration object
 
@@ -39,19 +40,15 @@ function globalObj( smode )
   
   this.objQuery     = new queryObj("","");
 
-  this.rootMode    = -1;
-  this.testMode    = -1;
-  this.debugMode   = -1;
-  this.action      = "";
-  this.search      = "";
-  this.language    = "";
+  this.rootMode      = -1;
+  this.testMode      = -1;
+  this.debugMode     = -1;
+  this.action        = "";
+  this.search        = "";
+  this.language      = "";
 
-  this.gridWidth    = DEFAULT_GRIDWIDTH ;
-  this.gridHeight   = DEFAULT_GRIDHEIGHT ;
-  this.cellWidth    = DEFAULT_CELLWIDTH ;
-  this.cellHeight   = DEFAULT_CELLHEIGHT ;
-  this.borderWidth  = DEFAULT_BORDERWIDTH ;
-  this.borderHeight = DEFAULT_BORDERHEIGHT ;
+  this.displayGrid   = new gridObj( ) ;
+  this.displayWin    = new canvasObj( ) ;
 
   // object methods
 
@@ -86,9 +83,9 @@ function GO_initObject()
     this.qmethod="JS";
     this.updateValues();
   }
-}  
+}
 
-function GO_updateQuery() 
+function GO_updateQuery()
 {
   var query      = this.objQuery.createQuery(1);
   this.updateValues();
@@ -96,7 +93,6 @@ function GO_updateQuery()
 
 function GO_updateValues()
 {
-
   this.testMode    = parseInt(this.objQuery.getValue("TEST"));
   if (isNaN(this.testMode)) this.testMode=0 ;
   this.debugMode   = parseInt(this.objQuery.getValue("DEBUG")) ;
@@ -105,21 +101,23 @@ function GO_updateValues()
   this.action      = this.objQuery.getValue("ACTION");
   this.language    = this.objQuery.getValue("LANGUAGE");
 
-  this.gridWidth       = parseInt(this.objQuery.getValue("gridwidth")) ;
-  if ( (isNaN( this.gridWidth )) || ( this.gridWidth <= 0 ) ) this.gridWidth = DEFAULT_GRIDWIDTH ;
-  this.gridHeight      = parseInt(this.objQuery.getValue("gridheight")) ;
-  if ( (isNaN( this.gridHeight )) || ( this.gridHeight <= 0 ) ) this.gridHeight = DEFAULT_GRIDHEIGHT ;
+  var gw = parseInt(this.objQuery.getValue("gridwidth")) ;
+  var gh = parseInt(this.objQuery.getValue("gridheight")) ;
+  var cw = parseInt(this.objQuery.getValue("cellwidth")) ;
+  var ch = parseInt(this.objQuery.getValue("cellheight")) ;
+  var bw = parseInt(this.objQuery.getValue("borderwidth")) ;
+  var bh = parseInt(this.objQuery.getValue("borderheight")) ;
 
-  this.cellWidth       = parseInt(this.objQuery.getValue("cellwidth")) ;
-  if ( (isNaN( this.cellWidth )) || ( this.width <= 0 ) ) this.cellWidth = DEFAULT_CELLWIDTH ;
-  this.cellHeight      = parseInt(this.objQuery.getValue("cellheight")) ;
-  if ( (isNaN( this.cellHeight )) || ( this.cellHeight <= 0 ) ) this.cellHeight = DEFAULT_CELLHEIGHT ;
+  if ( (isNaN( gw )) || ( this.gw <= 0 ) ) gw = DEFAULT_GRIDWIDTH ;
+  if ( (isNaN( gh )) || ( this.gh <= 0 ) ) gh = DEFAULT_GRIDHEIGHT ;
+  if ( (isNaN( cw )) || ( this.cw <= 0 ) ) cw = DEFAULT_CELLWIDTH ;
+  if ( (isNaN( ch )) || ( this.ch <= 0 ) ) ch = DEFAULT_CELLHEIGHT ;
+  if ( (isNaN( bw )) || ( this.bw <= 0 ) ) bw = DEFAULT_BORDERWIDTH ;
+  if ( (isNaN( bh )) || ( this.bh <= 0 ) ) bh = DEFAULT_BORDERHEIGHT ;
 
-  this.borderWidth     = parseInt(this.objQuery.getValue("borderwidth")) ;
-  if ( (isNaN(this.borderWidth )) || ( this.width <= 0 ) ) this.borderWidth = DEFAULT_BORDERWIDTH ;
-  this.borderHeight    = parseInt(this.objQuery.getValue("borderheight")) ;
-  if ( (isNaN( this.borderHeight )) || ( this.borderHeight <= 0 ) ) this.borderHeight = DEFAULT_BORDERHEIGHT ;
+  this.displayGrid.initObject( gw, gh, cw, ch, bw, bh );
 
+  this.displayWin.initObject( DEFAULT_CANVAS );
 }
 
 function GO_callValues()
@@ -128,26 +126,29 @@ function GO_callValues()
          "+testMode=" + this.testMode  +
          "+debugMode=" + this.debugMode +
          "+action=" + this.action +
-         "+gridWidth=" + this.gridWidth  +
-         "+gridHeigth=" + this.gridHeight +
-         "+cellWidth=" + this.cellWidth  +
-         "+cellHeigth=" + this.cellHeight +
-         "+borderWidth=" + this.borderWidth  +
-         "+borderHeigth=" + this.borderHeight ;
+         "+gridWidth=" + this.displayGrid.gridWidth  +
+         "+gridHeigth=" + this.displayGrid.gridHeight +
+         "+cellWidth=" + this.displayGrid.cellWidth  +
+         "+cellHeigth=" + this.displayGrid.cellHeight +
+         "+borderWidth=" + this.displayGrid.borderWidth  +
+         "+borderHeigth=" + this.displayGrid.borderHeight ;
 }
 
 function GO_alertValues()
 {
   alert( "GO_alertValues(): \nrootMode = " + this.rootMode +
-         " \ntestMode     = " + this.testMode  +
-         " \ndebugMode    = " + this.debugMode +
-         " \naction       = " + this.action +
-         " \ngridWidth    = " + this.gridWidth  +
-         " \ngridHeigth   = " + this.gridHeight +
-         " \ncellWidth    = " + this.cellWidth  +
-         " \ncellHeigth   = " + this.cellHeight +
-         " \nborderWidth  = " + this.borderWidth  +
-         " \nborderHeigth = " + this.borderHeight
+         " \ntestMode      = " + this.testMode  +
+         " \ndebugMode     = " + this.debugMode +
+         " \naction        = " + this.action +
+         " \ngridWidth     = " + this.displayGrid.gridWidth  +
+         " \ngridHeigth    = " + this.displayGrid.gridHeight +
+         " \ncellWidth     = " + this.displayGrid.cellWidth  +
+         " \ncellHeigth    = " + this.displayGrid.cellHeight +
+         " \nborderWidth   = " + this.displayGrid.borderWidth  +
+         " \nborderHeigth  = " + this.displayGrid.borderHeight +
+         " \ncanvas name   = " + this.displayWin.canvasName  +
+         " \ncanvas object = " + JSON.stringify(this.displayWin.cobj) +
+         " \n2D contex     = " + JSON.stringify(this.displayWin.ctx)
        );
 }
 

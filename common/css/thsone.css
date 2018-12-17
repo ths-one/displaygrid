@@ -3,8 +3,8 @@
    copyright 2018 ths@ths.one
 
    created : 2018/12/01
-   changed : 2018/12/02
-   version : 0.5.0
+   changed : 2018/12/15
+   version : 0.5.1
 
    This Application and all its containing files is free software; you 
    can redistribute it and/or modify it under the terms of the GNU 
@@ -61,7 +61,7 @@ a:active {
 }
 
 canvas {
-  color:white;
+  color:inherit;
   background-color:inherit;
 }
 

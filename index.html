@@ -5,8 +5,8 @@
 
    index.html : display grid entry page
    created : 2018/12/01
-   changed : 2018/12/02
-   version : 0.5.0
+   changed : 2018/12/16
+   version : 0.5.1
 
    This Application and all its containing files is free software; you 
    can redistribute it and/or modify it under the terms of the GNU 
@@ -31,7 +31,7 @@
   <meta name="KEYWORDS" content="ths,ths.one.javascript,lab">
   <meta name="PUBLISHER" content="ths,one">
   <meta name="LANGUAGE" content="english">
-  <meta name="COPYRIGHT" content="copyright (c) ths.one">
+  <meta name="COPYRIGHT" content="copyright (c) 2018 ths@ths.one">
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link rel="shortcut icon" href="./common/icons/thsone.ico">
@@ -43,51 +43,19 @@
   -->
   </style>
 
-  <script src="./common/jss/browserObj.js" type="text/javascript" language="JavaScript"></script>
-  <script src="./common/jss/queryObj.js"   type="text/javascript" language="JavaScript"></script>
-  <script src="./common/jss/globalObj.js"  type="text/javascript" language="JavaScript"></script>
+  <script src="./common/jss/browserObj.js"  type="text/javascript" language="JavaScript"></script>
+  <script src="./common/jss/queryObj.js"    type="text/javascript" language="JavaScript"></script>
+  <script src="./common/jss/gridObj.js"     type="text/javascript" language="JavaScript"></script>
+  <script src="./common/jss/canvasObj.js"   type="text/javascript" language="JavaScript"></script>
+  <script src="./common/jss/globalObj.js"   type="text/javascript" language="JavaScript"></script>
+  <script src="./common/jss/displaygrid.js" type="text/javascript" language="JavaScript"></script>
+  <script src="./common/jss/main.js"        type="text/javascript" language="JavaScript"></script>
 
   <script type="text/javascript" LANGUAGE="JavaScript">
   <!--
 
-    var curBrowser  = new browserObj("");
-    var curSettings = new globalObj("");
-
-    function checkContinue()
-    {
-
-      var nbase = "";
-
-      curBrowser.initObject();
-
-      if ( ( curBrowser.objmodel == "UNKNOWN" ) || ( ! curBrowser.cssEnabled) )
-        return "./common/errors/nocss.html";
-
-      if ( ( ! curBrowser.canvasSupported ) || ( ! curBrowser.canvas2DSupported ) )
-        return "./common/errors/nocanvas.html";
-
-      // ok, browser seems to be ok, so check for parameters
-
-      curSettings.initObject();
-
-      if (curSettings.action == "check")
-      {
-        curBrowser. alertBrowser() ;
-        curSettings.alertValues() ;
-        curSettings.action = "" ;
-        nbase = "index.html";
-      }
-      return nbase;
-    }
-
-    function doContinue()
-    {
-       var newurl=checkContinue() ;
-       if (newurl.length > 0)
-       {
-         top.location.href = newurl + curSettings.callValues();
-       }
-    }
+    window.addEventListener("resize", doResize );
+    window.addEventListener("load",   doContinue );
 
   //-->
   </script>
@@ -119,7 +87,10 @@
 <div id="menu">
   <a href="index.html"> [ home ] </a><br />
   <a href="displaygrid.html"> displaygrid </a><br>
+  <a href="index.html?ACTION=check"> check object values </a><br>
 </div>
+
+<canvas id="DGcanvas">no canvas</canvas>
 
 </body>
 </html>
